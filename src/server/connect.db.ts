@@ -1,6 +1,15 @@
 import { ODMLite } from '../odm/odm-lite.js';
+import mysql from 'mysql2/promise';
 import createDebug from 'debug';
 const debug = createDebug('demo:server:db:connect');
+
+const dataConnection = {
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWD,
+  database: process.env.DB_NAME || '',
+};
 
 export const connectDB = async () => {
   const info = await ODMLite.initializeJSON('./data/db.json');
@@ -8,14 +17,9 @@ export const connectDB = async () => {
 };
 
 export const connectMySQL = async () => {
-  const dataConnection = {
-    host: process.env.DB_HOST || 'localhost',
-    port: Number(process.env.DB_PORT) || 3306,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWD,
-    database: process.env.DB_NAME || '',
-
-      const connection = await mysql.createConnection(dataConnection);
+  //const info = await ODMLite.initializeJSON('./data/db.json');
+  //info.forEach((msg) => debug(msg));
+  const connection = await mysql.createConnection(dataConnection);
   console.log(
     'Connection to server:',
     connection.config.host,

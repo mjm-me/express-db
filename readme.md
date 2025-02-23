@@ -1,7 +1,5 @@
-# Challenge Express - animal
 # Challenge Express Products
 
-- [Challenge Express - animal](#challenge-express---animal)
 - [Challenge Express Products](#challenge-express-products)
   - [Planteamiento](#planteamiento)
     - [Evolución de la aplicación](#evolución-de-la-aplicación)
