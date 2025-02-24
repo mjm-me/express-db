@@ -1,24 +1,25 @@
+import { Connection } from 'mysql2/promise';
 import express from 'express';
 import createDebug from 'debug';
 import { resolve } from 'path';
 import morgan from 'morgan';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { debugLogger } from './middleware/debug-logger.js';
+import { debugLogger } from '../middleware/debug-logger.js';
 import {
   notFoundController,
   notMethodController,
-} from './controllers/base.controller.js';
-import { errorManager } from './controllers/errors.controller.js';
-import { HomeController } from './controllers/home.controller.js';
-import { createProductsRouter } from './routers/products.router.js';
-import { HomePage } from './views/pages/home-page.js';
-import { ProductsController } from './controllers/products.mvc.controller.js';
-import { AnimalFileRepo } from './models/animals.json.repository.js';
+} from '../controllers/base.controller.js';
+import { errorManager } from '../controllers/errors.controller.js';
+import { HomeController } from '../controllers/home.controller.js';
+import { createProductsRouter } from '../routers/products.router.js';
+import { HomePage } from '../views/pages/home-page.js';
+import { ProductsController } from '../controllers/products.mvc.controller.js';
+import { AnimalSqlRepo } from './models/animals.sql.repository.js';
 const debug = createDebug('demo:app');
 debug('Loaded module');
 
-export const createApp = () => {
+export const createApp = (connection: Connection) => {
   debug('Iniciando App...');
 
   const app = express();
@@ -52,7 +53,8 @@ export const createApp = () => {
   const homeController = new HomeController(homeView);
   app.get('/', homeController.getPage);
 
-  const animalModel = new AnimalFileRepo();
+  // const animalModel = new AnimalFileRepo();
+  const animalModel = new AnimalSqlRepo(connection);
   const productsController = new ProductsController(animalModel);
 
   app.use('/products', createProductsRouter(productsController));

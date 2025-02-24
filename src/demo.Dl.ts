@@ -1,5 +1,7 @@
 /* eslint-disable */
 
+/* eslint-disable */
+
 class InvoiceBad {
   company = new Company('Acme Inc.');
   constructor() {}
