@@ -72,7 +72,7 @@ const initializeSQLITE = async (relativeFilePath: string) => {
 const initializeTable = async (table: string, dataBase: Database) => {
   //  Alternativa id: string;
   const query = `CREATE TABLE IF NOT EXISTS ${table} (
-        id INTEGER PRIMARY KEY AUTO INCREMENT,
+        id INTEGER PRIMARY KEY AUTO_INCREMENT,
         name TEXT NOT NULL,
         englishName TEXT,
         sciName TEXT,
