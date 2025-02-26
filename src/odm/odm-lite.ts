@@ -1,5 +1,5 @@
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
-import type { TypeODM } from './odm.type.js';
+import type { TypeODM } from './odm.type';
 import { resolve, dirname } from 'path';
 
 import createDebug from 'debug';

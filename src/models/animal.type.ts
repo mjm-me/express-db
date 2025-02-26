@@ -25,7 +25,7 @@ export type Animal = z.infer<typeof Animal>;
 //     englishName: string;
 //     sciName: string;
 //     diet: string;
-//     lifestyle: enum;
+//     lifestyle: 'Diurno' | 'Nocturno';
 //     location: string;
 //     slogan: string;
 //     group: string;
@@ -33,6 +33,5 @@ export type Animal = z.infer<typeof Animal>;
 // }
 
 export type AnimalCreateDTO = Omit<Animal, 'id'>;
-
 
 export type AnimalUpdateDTO = Partial<Omit<Animal, 'id'>>;

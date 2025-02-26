@@ -1,4 +1,4 @@
-import type { Animal } from '../../../models/animal.type';
+import type { Animal } from '../../../models/animal.type.js';
 import { BasePage } from '../base-page.js';
 import createDebug from 'debug';
 
@@ -104,8 +104,8 @@ export class UpsertProductsPage extends BasePage {
                         ${item && `value="${item.lifestyle}"`}
                     >
                         <option></option>
-                        <option>Diurno</option>
-                        <option>Nocturno</option>
+                        <option ${item?.lifestyle === 'Diurno' && 'selected'}>Diurno</option>
+                        <option ${item?.lifestyle === 'Nocturno' && 'selected'}>Nocturno</option>
                     </select>
                   </label>
                 </label>

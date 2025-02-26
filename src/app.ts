@@ -17,7 +17,7 @@ import { ProductsController } from './controllers/products.mvc.controller.js';
 import type { Repository } from './models/repository.type.js';
 import type { Animal } from './models/animal.type.js';
 import { AnimalFileRepo } from './models/animals.json.repository.js';
-import { AnimalSqliteRepo } from './models/animals.mysql.repository.js';
+//import { AnimalSqliteRepo } from './models/animals.sqlite.repository.js';
 import { AnimalMySqlRepo } from './models/animals.mysql.repository.js';
 
 const debug = createDebug('demo:app');
@@ -59,9 +59,9 @@ export const createApp = () => {
 
   let animalModel: Repository<Animal>;
   switch (process.env.REPO as 'file' | 'sqlite' | 'mysql') {
-    case 'sqlite':
-      animalModel = new AnimalSqliteRepo();
-      break;
+    //case 'sqlite':
+    // animalModel = new AnimalSqliteRepo();
+    //break;
     case 'mysql':
       animalModel = new AnimalMySqlRepo();
       break;

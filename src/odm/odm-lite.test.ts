@@ -1,4 +1,4 @@
-import { ODMLite } from './odm-lite';
+import { ODMLite } from './odm-lite.js';
 import { readFile, writeFile } from 'node:fs/promises';
 import { vi } from 'vitest';
 
